@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 # ---------------- CONFIGURACIÓN (cámbiala aquí) ----------------
 KEYWORD = "MacBook Air"   # se busca en el título, sin mayúsculas ni tildes
-MAX_PRICE = 1500          # en euros; avisa solo si el precio es MENOR
+MAX_PRICE = 2500          # en euros; avisa solo si el precio es MENOR
 # ----------------------------------------------------------------
 
 URL = "https://www.apple.com/es/shop/refurbished/mac/macbook-air"
