@@ -1,0 +1,45 @@
+name: Monitor MacBook Air reacondicionados
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # cada 5 minutos (UTC); GitHub puede retrasarlo o saltárselo
+  workflow_dispatch:         # botón "Run workflow" para lanzarlo a mano
+
+permissions:
+  contents: write            # para poder commitear seen.json
+
+concurrency:
+  group: monitor             # nunca dos ejecuciones a la vez
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install requests beautifulsoup4
+
+      - name: Ejecutar monitor
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python monitor.py
+
+      - name: Guardar seen.json si cambió
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seen.json
+          if git diff --cached --quiet; then
+            echo "seen.json sin cambios"
+          else
+            git commit -m "Actualizar seen.json"
+            git pull --rebase
+            git push
+          fi
