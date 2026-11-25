@@ -1,4 +1,8 @@
 {
-  "seen": [],
+  "seen": [
+    "https://www.apple.com/es/shop/product/fly33y/a/refurbished-13-inch-macbook-air-apple-m2-chip-with-8%E2%80%91core-cpu-and-8%E2%80%91core-gpu-midnight",
+    "https://www.apple.com/es/shop/product/frym3y/a/MacBook-Air-reacondicionado-de-15-pulgadas-con-chip-M3-de-Apple-CPU-de-8-n%C3%BAcleos-y-GPU-de-10-n%C3%BAcleos-Gris-espacial",
+    "https://www.apple.com/es/shop/product/g15w3y/a/refurbished-13-inch-macbook-air-apple-m2-chip-with-8%E2%80%91core-cpu-and-8%E2%80%91core-gpu-silver"
+  ],
   "empty_alerted": false
 }
